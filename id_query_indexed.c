@@ -21,7 +21,16 @@ struct indexed_data {
 
 struct indexed_data* mk_indexed(struct record* rs, int n) {
     struct indexed_data *data = malloc(sizeof(struct indexed_data)); 
+    if (data == NULL) {
+        fprintf(stderr, "Failed to allocate memory for indexed_data\n");
+        return NULL;
+    }
     data->irs = malloc(n * sizeof(struct index_record));
+    if (data->irs == NULL) {
+        fprintf(stderr, "Failed to allocate memory for index_record array\n");
+        free(data);
+        return NULL;
+    }
     data->n = n;
     
     for (int i = 0; i < n; i++) {
