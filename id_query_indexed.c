@@ -37,8 +37,8 @@ void free_indexed(struct indexed_data* data) {
     free(data);
 }
 
-const strcut record* lookup_indexed(struct indexed_data *data, int64_t needle) {
-    for (int i = 0, i < data->n; i++) {
+const struct record* lookup_indexed(struct indexed_data *data, int64_t needle) {
+    for (int i = 0; i < data->n; i++) {
         if (data->irs[i].osm_id == needle) {
             return data->irs[i].record;
         }

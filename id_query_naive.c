@@ -15,7 +15,6 @@ struct naive_data {
 };
 
 struct naive_data* mk_naive(struct record* rs, int n) {
-  // TODO
   struct naive_data *data = malloc(sizeof(struct naive_data));
   if (data == NULL) {
     fprintf(stderr, "Failed to allocate memory for naive_data\n");
@@ -27,12 +26,10 @@ struct naive_data* mk_naive(struct record* rs, int n) {
 }
 
 void free_naive(struct naive_data* data) {
-  // TODO
   free(data);
 }
 
 const struct record* lookup_naive(struct naive_data *data, int64_t needle) {
-  // TODO
   if (data == NULL || data->n == 0) {
     return NULL;
   }
