@@ -85,15 +85,15 @@ static void merge(struct record **points, struct record **temp, int low, int mid
 
 // Using mergesort to recursively split points into two halves, sorts each half,
 // and merges them back together based on the given coordinate axis.
-static void mergesort(struct record **points, struct record **temp, int low, int high, int axis) {
+static void my_mergesort(struct record **points, struct record **temp, int low, int high, int axis) {
     if (high - low <= 1) {
         return;
     }
 
     int mid = low + (high - low) / 2;
 
-    mergesort(points, temp, low, mid, axis);
-    mergesort(points, temp, mid, high, axis);
+    my_mergesort(points, temp, low, mid, axis);
+    my_mergesort(points, temp, mid, high, axis);
 
     merge(points, temp, low, mid, high, axis);
 }
@@ -116,7 +116,7 @@ static struct kdtree_node* kdtree(struct record **points, int n, int depth) {
     }
 
     // Sort points by the current axis.
-    mergesort(points, temp, 0, n, axis);
+    my_mergesort(points, temp, 0, n, axis);
 
     // Free temporary allocated memory
     free(temp);
